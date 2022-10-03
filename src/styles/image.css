@@ -1,5 +1,4 @@
 .image {
-  grid-column: 1/4;
   grid-row: 2/3;
   height: 100%;
   display: flex;
