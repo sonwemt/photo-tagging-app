@@ -1,0 +1,1 @@
+A "Where's waldo-like" using react and firebase.
