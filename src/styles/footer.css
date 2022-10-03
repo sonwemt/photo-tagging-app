@@ -1,0 +1,16 @@
+#footer {
+  grid-row: 3/4;
+  grid-column: 1/4;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(103, 111, 126, 0.284);
+
+}
+
+.creditLink {
+  flex: 1;
+}

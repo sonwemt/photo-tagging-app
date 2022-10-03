@@ -1,1 +1,5 @@
-
+#App {
+  display: grid;
+  height: 110vh;
+  grid-template: minmax(min-content, 12vh) 88vh minmax(min-content, 10vh) / 1fr 3fr 1fr;
+}

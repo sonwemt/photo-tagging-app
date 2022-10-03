@@ -1,0 +1,9 @@
+#header {
+  display: grid;
+  text-align: center;
+  place-content: center;
+  height: 100%;
+  grid-row: 1/2;
+  grid-column: 1/4;
+  background-color: rgba(103, 111, 126, 0.284);
+}
