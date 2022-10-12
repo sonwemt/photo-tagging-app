@@ -1,8 +1,50 @@
-.image {
+.backgroundContainer {
+  display: grid;
+  place-content: center;
+  background-color: rgba(0, 0, 0, 0.866);
+}
+
+.imageContainer {
+  display: inline-block;
+  place-content: center;
+  position: relative;
   grid-row: 2/3;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.866);
   overflow: hidden;
 }
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#selectorContainer {
+  display: flex;
+  z-index: 1000;
+  position: absolute;
+  height: 12%;
+  width: 40%;
+}
+
+#imageSelector {
+  border: 3px solid rgba(44, 44, 44, 0.871);
+  width: 65%;
+}
+
+.dropdownmenu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  overflow: scroll;
+  width: 35%;
+  background: rgba(176, 176, 176, 0.8);
+}
+
+.tag {
+  position: absolute;
+  border: 3px solid rgba(0, 95, 11, 0.871);
+}
+
+
+

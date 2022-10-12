@@ -6,4 +6,4 @@ function Header( {headerText} ) {
   </div>
 }
 
-export default Header;
+export{ Header };
