@@ -23,5 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Temporary files
+/src/content/pic1.jpg
+/src/content/pic1.txt
 /src/content/pic1orig.jpg
 /src/content/pic2orig.jpg
