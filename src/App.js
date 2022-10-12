@@ -50,7 +50,7 @@ const aircraft = [
 
 function App() {
   return (
-    <div id="App">
+    <div id="appcontainer">
       <Header headerText='Identify The Aircraft'/>
       <Image imageRef={pic2} imageName='pic2' array={aircraft} />
       <Footer />
