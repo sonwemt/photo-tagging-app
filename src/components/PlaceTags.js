@@ -1,10 +1,10 @@
 function PlaceTags({ tags }) {
   return <> {tags.map((tag) => {
     const tagStyle = {
-        left: `${tag.location.left}%`, 
-        top: `${tag.location.top}%`,
-        width: `${tag.location.right - tag.location.left}%`,
-        height: `${tag.location.bottom - tag.location.top}%`,
+        left: `${tag.left}%`, 
+        top: `${tag.top}%`,
+        width: `${tag.right - tag.left}%`,
+        height: `${tag.bottom - tag.top}%`,
     }
     return <div key={tag.id + 'f'} className={`tag ${tag.id}`} style={tagStyle}></div>
   })}</>

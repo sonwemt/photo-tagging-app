@@ -60,8 +60,8 @@ function Image({ imageRef, imageName, array, setTimerRunning }) {
 
   const handleListClick = (e, index) => {
     e.stopPropagation();
-    if((selectorPos.x > array[index].location.left && selectorPos.x < array[index].location.right) && 
-    (selectorPos.y > array[index].location.top && selectorPos.y < array[index].location.bottom)) {
+    if((selectorPos.x > array[index].left && selectorPos.x < array[index].right) && 
+    (selectorPos.y > array[index].top && selectorPos.y < array[index].bottom)) {
       setSelectorVisible(false);
       if(!taggedPositions.find((tag) => tag.id === array[index].id)) {
         setTaggedPositions(() => taggedPositions.concat(array[index]));
@@ -77,13 +77,14 @@ function Image({ imageRef, imageName, array, setTimerRunning }) {
   }, [selectorPos])
 
   useEffect(() => {
-    console.log(taggedPositions);
+    // Stop timer once all tags are found
     if(taggedPositions.length === array.length) {
       setTimerRunning(false);
     }
   }, [taggedPositions, array, setTimerRunning])
 
-  return (<div className='backgroundContainer' onClick={(e) => handleImageClick(e)}>
+  return (
+  <div className='backgroundContainer' onClick={(e) => handleImageClick(e)}>
     <div className='imageContainer'>
       <img src={imageRef} alt={imageName} className='image' ></img>
       {
