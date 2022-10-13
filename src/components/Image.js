@@ -3,7 +3,7 @@ import '../styles/image.css';
 import { DropdownMenu } from './DropdownMenu';
 import { PlaceTags } from './PlaceTags';
 
-function Image({ imageRef, imageName, dimensions, grid, array }) {
+function Image({ imageRef, imageName, array, setTimerRunning }) {
   const [selectorVisible, setSelectorVisible] = useState(false);
   const [selectorPos, setSelectorPos] = useState(false);
   const [taggedPositions, setTaggedPositions] = useState([]);
@@ -66,6 +66,7 @@ function Image({ imageRef, imageName, dimensions, grid, array }) {
       if(!taggedPositions.find((tag) => tag.id === array[index].id)) {
         setTaggedPositions(() => taggedPositions.concat(array[index]));
       }
+      
     } else {
       console.log('not true')
     }
@@ -77,7 +78,10 @@ function Image({ imageRef, imageName, dimensions, grid, array }) {
 
   useEffect(() => {
     console.log(taggedPositions);
-  }, [taggedPositions])
+    if(taggedPositions.length === array.length) {
+      setTimerRunning(false);
+    }
+  }, [taggedPositions, array, setTimerRunning])
 
   return (<div className='backgroundContainer' onClick={(e) => handleImageClick(e)}>
     <div className='imageContainer'>

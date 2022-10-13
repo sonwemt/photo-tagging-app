@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Image } from './components/Image';
 import { Footer } from './components/Footer';
 import pic2 from './content/pic2.jpg';
+import { useEffect, useState } from 'react';
 
 const aircraft = [
   {
@@ -49,10 +50,28 @@ const aircraft = [
 
 
 function App() {
+  const [timerRunning, setTimerRunning] = useState(true);
+  const [time, setTime] = useState(0)
+  // const [finalTime, setFinalTime] = useState(0);
+
+
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(time + 1);
+      console.log(time);
+    }, 1000)
+    if(!timerRunning) {
+      clearInterval(timer);
+      console.log('All aircraft found. Your time: ' + time);
+    }
+    return () => clearInterval(timer);
+  }, [timerRunning, time])
+
   return (
     <div id="appcontainer">
-      <Header headerText='Identify The Aircraft'/>
-      <Image imageRef={pic2} imageName='pic2' array={aircraft} />
+      <Header headerText='Identify The Aircraft' time={time} />
+      <Image imageRef={pic2} imageName='pic2' array={aircraft} setTimerRunning={setTimerRunning} time={time} />
       <Footer />
     </div>
   );

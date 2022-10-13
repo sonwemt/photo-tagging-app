@@ -1,9 +1,18 @@
-#header {
+#headerContainer {
   display: grid;
+  place-items: center;
   text-align: center;
-  place-content: center;
+  grid-template-columns: 1fr 2fr 1fr;
   height: 100%;
   grid-row: 1/2;
   background-color: rgba(255, 0, 0, 0.797);
   box-shadow: 8px 8px 8px #888;
+}
+
+#header {
+  grid-column: 2/3;
+}
+
+#timer {
+  grid-column: 3/4;
 }
