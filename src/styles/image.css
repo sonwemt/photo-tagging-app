@@ -23,28 +23,28 @@
   display: flex;
   z-index: 1000;
   position: absolute;
-  height: 12%;
-  width: 40%;
+  height: 20%;
+  width: 22%;
+  align-items: center;
+}
+
+#selectorSpace {
+  width: 10%;
 }
 
 #imageSelector {
-  border: 3px solid rgba(44, 44, 44, 0.871);
-  width: 65%;
+  border: 3px solid rgba(0, 119, 255, 0.95);
+  width: 30%;
+  height: 30%;
 }
 
-.dropdownmenu {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  overflow: scroll;
-  width: 35%;
-  background: rgba(176, 176, 176, 0.8);
-}
-
-.tag {
+.fetchDiv {
   position: absolute;
-  border: 3px solid rgba(0, 95, 11, 0.871);
+  left: 50%;
+  top: 10%;
 }
+
+
 
 
 

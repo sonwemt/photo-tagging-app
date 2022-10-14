@@ -1,0 +1,22 @@
+#startContainer {
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.866);
+  color: rgb(163, 163, 163);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.startText {
+  width: 55%;
+}
+
+#startButton {
+  height: 4rem;
+  width: 8rem;
+}
