@@ -5,7 +5,7 @@ import { Footer } from './components/Footer';
 import pic2 from './content/pic2.jpg';
 import { useEffect, useState } from 'react';
 import db from './components/firebase';
-import { collection, doc } from 'firebase/firestore';
+import { collection, doc, getDoc } from 'firebase/firestore';
 import { StartPrompt } from './components/StartPrompt';
 
 const aircraft = [
@@ -46,10 +46,14 @@ const aircraft = [
 const aircraftRef = collection(db, 'Aircraft');
 const listRef = doc(aircraftRef, 'List');
 
+const playersRef = collection(db, 'Players');
+const scoresRef = doc(playersRef, 'Scores');
+
 function App() {
   const [gameStart, setGameStart] = useState(false);
   const [timerRunning, setTimerRunning] = useState(true);
   const [time, setTime] = useState(0);
+  const [highscoreData, setHighscoreData] = useState(false);
 
   useEffect(() => {
     if(gameStart) {
@@ -65,9 +69,22 @@ function App() {
     }
   }, [gameStart, timerRunning, time])
 
+ /*  useEffect(() => {
+    const getData = async () => {
+      
+    }
+    getData();
+  }, []) */
+
+  const getScores = async () => {
+    const scoreSnap = await getDoc(scoresRef);
+    const scoreArray = scoreSnap.data().scoreArray;
+    setHighscoreData(scoreArray);
+  }
+
   return (
     <div id="appcontainer">
-      <Header headerText='Identify The Aircraft' time={time} />
+      <Header headerText='Identify The Aircraft' time={time} highscoreData={highscoreData} getScores={getScores}/>
       {
       gameStart ? 
       <Image imageRef={pic2} imageName='pic2' array={aircraft} aircraftRef={aircraftRef} setTimerRunning={setTimerRunning} time={time} listRef={listRef} />:
