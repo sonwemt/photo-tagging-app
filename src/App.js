@@ -5,7 +5,7 @@ import { Footer } from './components/Footer';
 import pic2 from './content/pic2.jpg';
 import { useEffect, useState } from 'react';
 import db from './components/firebase';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { StartPrompt } from './components/StartPrompt';
 
 const aircraft = [
@@ -47,7 +47,6 @@ const aircraftRef = collection(db, 'Aircraft');
 const listRef = doc(aircraftRef, 'List');
 
 const playersRef = collection(db, 'Players');
-const scoresRef = doc(playersRef, 'Scores');
 
 function App() {
   const [gameStart, setGameStart] = useState(false);
@@ -69,17 +68,13 @@ function App() {
     }
   }, [gameStart, timerRunning, time])
 
- /*  useEffect(() => {
-    const getData = async () => {
-      
-    }
-    getData();
-  }, []) */
-
   const getScores = async () => {
-    const scoreSnap = await getDoc(scoresRef);
-    const scoreArray = scoreSnap.data().scoreArray;
-    setHighscoreData(scoreArray);
+    const playerSnap = await getDocs(playersRef);
+    const tempArray = [];
+    playerSnap.forEach((doc) => {
+      tempArray.push({id: doc.id, score: doc.data().score})
+    })
+    setHighscoreData(tempArray);
   }
 
   return (

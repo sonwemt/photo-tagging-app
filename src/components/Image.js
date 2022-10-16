@@ -77,7 +77,6 @@ function Image({ imageRef, imageName, array, setTimerRunning, aircraftRef, listR
       if(!taggedPositions.find((tag) => tag.id === selectedAircraft.id)) {
         setTaggedPositions(() => taggedPositions.concat(selectedAircraft));
       }
-      
     } else {
       const selector = document.getElementById('imageSelector');
       selector.style.border = 'solid 3px red';
