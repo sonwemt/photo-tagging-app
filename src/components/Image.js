@@ -4,7 +4,7 @@ import { DropdownMenu } from './DropdownMenu';
 import { PlaceTags } from './PlaceTags';
 import { doc, getDoc } from 'firebase/firestore';
 
-function Image({ imageRef, imageName, array, setTimerRunning, aircraftRef, listRef }) {
+function Image({ imageRef, imageName, setTimerRunning, aircraftRef, listRef }) {
   const [selectorVisible, setSelectorVisible] = useState(false);
   const [selectorPos, setSelectorPos] = useState(false);
   const [taggedPositions, setTaggedPositions] = useState([]);
@@ -13,7 +13,7 @@ function Image({ imageRef, imageName, array, setTimerRunning, aircraftRef, listR
 
   const handleImageClick = async (e) => {
     // Stop interaction once all tags are found
-    if(taggedPositions.length === array.length) {
+    if(taggedPositions.length === listData.length) {
       return;
     }
     const image = document.querySelector('.image');
@@ -93,10 +93,10 @@ function Image({ imageRef, imageName, array, setTimerRunning, aircraftRef, listR
 
   useEffect(() => {
     // Stop timer once all tags are found
-    if(taggedPositions.length === array.length) {
+    if(taggedPositions.length === listData.length) {
       setTimerRunning(false);
     }
-  }, [taggedPositions, array, setTimerRunning])
+  }, [taggedPositions, listData, setTimerRunning])
 
   useEffect(() => {
     const getData = async () => {
