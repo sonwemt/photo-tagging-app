@@ -5,7 +5,7 @@ import { Footer } from './components/Footer';
 import pic2 from './content/pic2.jpg';
 import { useEffect, useState } from 'react';
 import db from './components/firebase';
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs } from 'firebase/firestore';
 import { StartPrompt } from './components/StartPrompt';
 
 const aircraft = [

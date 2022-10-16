@@ -81,7 +81,7 @@ function Image({ imageRef, imageName, array, setTimerRunning, aircraftRef, listR
       const selector = document.getElementById('imageSelector');
       selector.style.border = 'solid 3px red';
       console.log('not true')
-      const timer = setTimeout(() => {
+      setTimeout(() => {
         setSelectorVisible(false);
       }, 500);
     }
