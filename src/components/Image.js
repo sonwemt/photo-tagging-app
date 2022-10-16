@@ -29,26 +29,26 @@ function Image({ imageRef, imageName, setTimerRunning, aircraftRef, listRef }) {
       if(!selectorVisible) {
         await setSelectorVisible(true);
       }
-      const selector = document.getElementById('selectorContainer');
+      const selectorContainer = document.getElementById('selectorContainer');
       const dropdownmenu = document.querySelector('.dropdownmenu');
       const spacer = document.getElementById('selectorSpace');
       let selectorWidth;
-      const selectorHeight = selector.offsetHeight * 0.25;
+      const selectorHeight = selectorContainer.offsetHeight * 0.25;
 
       // Make sure dropdown doesn't overflow
-      if(mouseX > image.width - boundary.left / 2) {
-        selector.style.flexDirection = 'row-reverse';
-        selectorWidth = selector.offsetWidth + dropdownmenu.offsetWidth + spacer.offsetWidth;
+      if(mouseX < image.width / 2 + boundary.left) {
+        selectorContainer.style.flexDirection = 'row';
+        selectorWidth = selectorContainer.offsetWidth - dropdownmenu.offsetWidth - spacer.offsetWidth;
       } else {
-        selector.style.flexDirection = 'row';
-        selectorWidth = selector.offsetWidth - dropdownmenu.offsetWidth - spacer.offsetWidth;
+        selectorContainer.style.flexDirection = 'row-reverse';
+        selectorWidth = selectorContainer.offsetWidth + dropdownmenu.offsetWidth + spacer.offsetWidth;
       }
 
       const offsetX = (mouseX - boundary.left - selectorWidth / 2) / image.width * 100;
       const offsetY = (mouseY - boundary.top - selectorHeight / 2) / image.height * 100;
 
-      selector.style.left = offsetX + '%';
-      selector.style.top = offsetY + '%';
+      selectorContainer.style.left = offsetX + '%';
+      selectorContainer.style.top = offsetY + '%';
 
       // Mouse position without offset
       const posX = (mouseX - boundary.left) / image.width * 100;
