@@ -7,6 +7,7 @@
   grid-row: 1/2;
   background-color: rgba(255, 0, 0, 0.797);
   box-shadow: 8px 8px 8px #888;
+  color:rgb(255, 255, 255);
 }
 
 #header {
@@ -40,4 +41,12 @@
   height: minmax(min-content,1000%);
   z-index: 1001;
   overflow-y: auto;
+}
+
+#highscoreButton {
+  color: inherit;
+  background-color: rgb(128, 128, 128);
+  border-radius: 0.5rem;
+  height: 2rem;
+  width: 6rem;
 }

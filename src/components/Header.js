@@ -19,8 +19,8 @@ function Header( {headerText, time, highscoreData, getScores} ) {
 
   return (
   <div id="headerContainer">
-    <div id='highscoresContainer'>
-      <button onClick={handleHighscoreClick}>Highscores</button>
+    <div id="highscoresContainer">
+      <button id="highscoreButton" onClick={handleHighscoreClick}>Highscores</button>
       {showHighscores ?<div id="highscores">
        {highscoreData ? <Highscores highscores={highscoreData} />:
        <div>Fetching</div>}

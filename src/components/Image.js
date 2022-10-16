@@ -33,7 +33,7 @@ function Image({ imageRef, imageName, setTimerRunning, aircraftRef, listRef }) {
       const dropdownmenu = document.querySelector('.dropdownmenu');
       const spacer = document.getElementById('selectorSpace');
       let selectorWidth;
-      const selectorHeight = selector.offsetHeight;
+      const selectorHeight = selector.offsetHeight * 0.25;
 
       // Make sure dropdown doesn't overflow
       if(mouseX > image.width - boundary.left / 2) {

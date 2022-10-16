@@ -25,7 +25,6 @@
   position: absolute;
   height: 20%;
   width: 22%;
-  align-items: center;
 }
 
 #selectorSpace {
@@ -33,9 +32,10 @@
 }
 
 #imageSelector {
-  border: 3px solid rgba(0, 119, 255, 0.95);
-  width: 30%;
-  height: 30%;
+  border: 3px dotted rgb(0, 60, 255);
+  width: 25%;
+  height: 25%;
+  border-radius: 1rem;
 }
 
 .fetchDiv {
