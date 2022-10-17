@@ -2,11 +2,12 @@ import './App.css';
 import { Header } from './components/Header';
 import { Image } from './components/Image';
 import { Footer } from './components/Footer';
+import { StartPrompt } from './components/StartPrompt';
 import pic2 from './content/pic2.jpg';
 import { useEffect, useState } from 'react';
 import db from './components/firebase';
 import { collection, doc, getDocs } from 'firebase/firestore';
-import { StartPrompt } from './components/StartPrompt';
+
 
 const aircraftRef = collection(db, 'Aircraft');
 const listRef = doc(aircraftRef, 'List');
@@ -47,7 +48,15 @@ function App() {
       <Header headerText='Identify The Aircraft' time={time} highscoreData={highscoreData} getScores={getScores}/>
       {
       gameStart ? 
-      <Image imageRef={pic2} imageName='pic2' aircraftRef={aircraftRef} setTimerRunning={setTimerRunning} time={time} listRef={listRef} />:
+      <Image
+      imageRef={pic2}
+      imageName='pic2'
+      aircraftRef={aircraftRef}
+      setTimerRunning={setTimerRunning}
+      time={time} listRef={listRef}
+      highscoreData={highscoreData}
+      getScores={getScores}
+      />:
       <StartPrompt setGameStart={setGameStart} /> 
       }
       <Footer /> 

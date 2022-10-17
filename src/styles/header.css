@@ -39,7 +39,7 @@
   display: grid;
   width: 180%;
   height: minmax(min-content,1000%);
-  z-index: 1001;
+  z-index: 1003;
   overflow-y: auto;
 }
 

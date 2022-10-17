@@ -3,13 +3,24 @@ import '../styles/image.css';
 import { DropdownMenu } from './DropdownMenu';
 import { PlaceTags } from './PlaceTags';
 import { doc, getDoc } from 'firebase/firestore';
+import { WinPrompt } from './WinPrompt';
 
-function Image({ imageRef, imageName, setTimerRunning, aircraftRef, listRef }) {
+function Image({ 
+  imageRef,
+  imageName,
+  setTimerRunning,
+  time,
+  aircraftRef,
+  listRef, 
+  highscoreData,
+  getScores 
+}) {
   const [selectorVisible, setSelectorVisible] = useState(false);
   const [selectorPos, setSelectorPos] = useState(false);
   const [taggedPositions, setTaggedPositions] = useState([]);
   const [listData, setListData] = useState(false);
   const [showFetchDiv, setShowFetchDiv] = useState(false);
+  const [gameover, setGameover] = useState(false);
 
   const handleImageClick = async (e) => {
     // Stop interaction once all tags are found
@@ -95,6 +106,7 @@ function Image({ imageRef, imageName, setTimerRunning, aircraftRef, listRef }) {
     // Stop timer once all tags are found
     if(taggedPositions.length === listData.length) {
       setTimerRunning(false);
+      setGameover(true);
     }
   }, [taggedPositions, listData, setTimerRunning])
 
@@ -113,6 +125,7 @@ function Image({ imageRef, imageName, setTimerRunning, aircraftRef, listRef }) {
   <div className='backgroundContainer' onClick={(e) => handleImageClick(e)}>
     <div className='imageContainer'>
       {showFetchDiv ? <div className='fetchDiv'>Fetching...</div>: null}
+      {gameover ? <WinPrompt  time={time} highscoreData={highscoreData} getScores={getScores} />: null}
       <img src={imageRef} alt={imageName} className='image' ></img>
       {
         selectorVisible ? 
