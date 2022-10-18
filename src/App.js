@@ -23,9 +23,9 @@ function App() {
   useEffect(() => {
     if(gameStart) {
       const timer = setInterval(() => {
-        setTime(time + 1);
-        console.log(time);
-      }, 1000)
+        const newTime = time + 0.1;
+        setTime(Math.round((newTime + Number.EPSILON) * 100) / 100);
+      }, 100)
       if (!timerRunning) {
         clearInterval(timer);
         console.log('All aircraft found. Your Score: ' + time);
