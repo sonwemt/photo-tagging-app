@@ -21,10 +21,11 @@ function Header( {headerText, time, highscoreData, getScores, playerName} ) {
   <div id="headerContainer">
     <div id="highscoresContainer">
       <button id="highscoreButton" onClick={handleHighscoreClick}>Highscores</button>
-      {showHighscores ?<div id="highscores">
-       {highscoreData ? <Highscores highscores={highscoreData} playerName={playerName}/>:
-       <div>Fetching</div>}
-        </div>: null}
+      {showHighscores ?
+      <div id="highscores">
+        {highscoreData ? <Highscores highscores={highscoreData} playerName={playerName}/>:
+        <div>Fetching</div>}
+      </div>: null}
     </div>
     <h1 id="header">{headerText}</h1>
     <h3 id="timer">Time elapsed: {time}</h3>
