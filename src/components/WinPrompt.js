@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import '../styles/winprompt.css';
 import { Highscores } from './Highscores';
 
-function WinPrompt( {time, highscoreData, getScores, updateScores} ) {
-  const [playerName, setPlayerName] = useState('');
+function WinPrompt( {time, highscoreData, getScores, updateScores, playerName, setPlayerName} ) {
+  
   const [scoreSubmitted, setScoreSubmitted] = useState(false);
   useEffect(() => {
       if(!highscoreData) {
@@ -29,7 +29,7 @@ function WinPrompt( {time, highscoreData, getScores, updateScores} ) {
         <input type="button" onClick={handleSubmission} value="Submit Score"></input>
       </form>
     </div>
-    {highscoreData ? <Highscores highscores={highscoreData} />: <div>Fetching scores...</div>}
+    {highscoreData ? <Highscores highscores={highscoreData} playerName={playerName}/>: <div>Fetching scores...</div>}
   </div>
   );
 }

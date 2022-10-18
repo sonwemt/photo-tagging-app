@@ -14,7 +14,9 @@ function Image({
   listRef, 
   highscoreData,
   getScores,
-  updateScores
+  updateScores,
+  playerName,
+  setPlayerName,
 }) {
   const [selectorVisible, setSelectorVisible] = useState(false);
   const [selectorPos, setSelectorPos] = useState(false);
@@ -126,7 +128,7 @@ function Image({
   <div className='backgroundContainer' onClick={(e) => handleImageClick(e)}>
     <div className='imageContainer'>
       {showFetchDiv ? <div className='fetchDiv'>Fetching...</div>: null}
-      {gameover ? <WinPrompt  time={time} highscoreData={highscoreData} getScores={getScores} updateScores={updateScores}/>: null}
+      {gameover ? <WinPrompt  time={time} highscoreData={highscoreData} getScores={getScores} updateScores={updateScores} playerName={playerName} setPlayerName={setPlayerName}/>: null}
       <img src={imageRef} alt={imageName} className='image' ></img>
       {
         selectorVisible ? 

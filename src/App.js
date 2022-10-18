@@ -19,6 +19,7 @@ function App() {
   const [timerRunning, setTimerRunning] = useState(true);
   const [time, setTime] = useState(0);
   const [highscoreData, setHighscoreData] = useState(false);
+  const [playerName, setPlayerName] = useState('');
 
   useEffect(() => {
     if(gameStart) {
@@ -75,7 +76,7 @@ function App() {
 
   return (
     <div id="appcontainer">
-      <Header headerText='Identify The Aircraft' time={time} highscoreData={highscoreData} getScores={getScores}/>
+      <Header headerText='Identify The Aircraft' time={time} highscoreData={highscoreData} getScores={getScores} playerName={playerName}/>
       {
       gameStart ? 
       <Image
@@ -87,6 +88,8 @@ function App() {
       highscoreData={highscoreData}
       getScores={getScores}
       updateScores={updateScores}
+      playerName={playerName}
+      setPlayerName={setPlayerName}
       />:
       <StartPrompt setGameStart={setGameStart} /> 
       }

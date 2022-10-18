@@ -3,7 +3,7 @@ import '../styles/header.css';
 import { Highscores } from './Highscores';
 
 
-function Header( {headerText, time, highscoreData, getScores} ) {
+function Header( {headerText, time, highscoreData, getScores, playerName} ) {
   const [showHighscores, setShowHighscores] = useState(false);
 
   const handleHighscoreClick = () => {
@@ -22,7 +22,7 @@ function Header( {headerText, time, highscoreData, getScores} ) {
     <div id="highscoresContainer">
       <button id="highscoreButton" onClick={handleHighscoreClick}>Highscores</button>
       {showHighscores ?<div id="highscores">
-       {highscoreData ? <Highscores highscores={highscoreData} />:
+       {highscoreData ? <Highscores highscores={highscoreData} playerName={playerName}/>:
        <div>Fetching</div>}
         </div>: null}
     </div>
