@@ -41,6 +41,7 @@
   height: minmax(min-content,1000%);
   z-index: 1003;
   overflow-y: auto;
+  text-align: start;
 }
 
 #highscoreButton {

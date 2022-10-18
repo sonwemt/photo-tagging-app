@@ -13,7 +13,8 @@ function Image({
   aircraftRef,
   listRef, 
   highscoreData,
-  getScores 
+  getScores,
+  updateScores
 }) {
   const [selectorVisible, setSelectorVisible] = useState(false);
   const [selectorPos, setSelectorPos] = useState(false);
@@ -125,7 +126,7 @@ function Image({
   <div className='backgroundContainer' onClick={(e) => handleImageClick(e)}>
     <div className='imageContainer'>
       {showFetchDiv ? <div className='fetchDiv'>Fetching...</div>: null}
-      {gameover ? <WinPrompt  time={time} highscoreData={highscoreData} getScores={getScores} />: null}
+      {gameover ? <WinPrompt  time={time} highscoreData={highscoreData} getScores={getScores} updateScores={updateScores}/>: null}
       <img src={imageRef} alt={imageName} className='image' ></img>
       {
         selectorVisible ? 

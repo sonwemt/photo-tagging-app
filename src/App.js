@@ -6,7 +6,7 @@ import { StartPrompt } from './components/StartPrompt';
 import pic2 from './content/pic2.jpg';
 import { useEffect, useState } from 'react';
 import db from './components/firebase';
-import { collection, doc, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs, setDoc, deleteDoc } from 'firebase/firestore';
 
 
 const aircraftRef = collection(db, 'Aircraft');
@@ -40,7 +40,37 @@ function App() {
     playerSnap.forEach((doc) => {
       tempArray.push({id: doc.id, score: doc.data().score})
     })
+    tempArray.sort((prev, curr) => {
+      return prev.score - curr.score;
+    })
     setHighscoreData(tempArray);
+  }
+
+  const updateScores = async (name, score) => {
+    if(highscoreData.length < 15) {
+      await setDoc(doc(db, 'Players', `${name}`), {
+        score: score,
+      })
+      await getScores();
+      return;
+    }
+
+     const closestScore = highscoreData.find((player, index) => {
+      if(score < player.score) {
+        return true;
+      }
+      return false;
+    });
+    if(closestScore === undefined) {
+      console.log('Your score was not good enough for the top15');
+      return;
+    }
+    
+    await deleteDoc(doc(db, 'Players', `${highscoreData.pop().id}`));
+    await setDoc(doc(db, 'Players', `${name}`), {
+      score: score,
+    })
+    await getScores();
   }
 
   return (
@@ -56,6 +86,7 @@ function App() {
       time={time} listRef={listRef}
       highscoreData={highscoreData}
       getScores={getScores}
+      updateScores={updateScores}
       />:
       <StartPrompt setGameStart={setGameStart} /> 
       }
